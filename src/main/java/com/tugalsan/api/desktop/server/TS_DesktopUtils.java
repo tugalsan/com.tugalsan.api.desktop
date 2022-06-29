@@ -3,7 +3,11 @@ package com.tugalsan.api.desktop.server;
 import java.nio.file.*;
 import javax.swing.*;
 
-public class TS_Desktop {
+public class TS_DesktopUtils {
+
+    public static Path currentFolder() {
+        return Path.of("").toAbsolutePath().normalize();
+    }
 
     public static Path chooseFolder() {
         var chooser = new JFileChooser();
