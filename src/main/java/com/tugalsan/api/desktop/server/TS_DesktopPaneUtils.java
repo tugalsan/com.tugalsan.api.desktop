@@ -52,7 +52,7 @@ public class TS_DesktopPaneUtils {
         });
     }
 
-    public static void paintComponent(TS_DesktopPane pane, Graphics g, Image imgBack) {
+    public static void paintComponent(JDesktopPane pane, Graphics g, Image imgBack) {
         if (imgBack != null) {
             var x = (pane.getWidth() - imgBack.getWidth(null)) / 2;
             var y = (pane.getHeight() - imgBack.getHeight(null)) / 2;
@@ -60,7 +60,7 @@ public class TS_DesktopPaneUtils {
         }
     }
 
-    public static void keepInternalFramesInsideThePane(TS_DesktopPane pane) {
+    public static void keepInternalFramesInsideThePane(JDesktopPane pane) {
         pane.setDesktopManager(new DefaultDesktopManager() {
             // This is called anytime a frame is moved. This
             // implementation keeps the frame from leaving the desktop.

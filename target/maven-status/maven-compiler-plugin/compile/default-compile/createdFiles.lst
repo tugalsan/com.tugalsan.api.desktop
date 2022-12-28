@@ -1,7 +1,6 @@
 com\tugalsan\api\desktop\server\TS_DesktopFrameUtils.class
 com\tugalsan\api\desktop\server\TS_DesktopPaneUtils$1.class
 com\tugalsan\api\desktop\server\TS_DesktopDialogMessageUtils.class
-com\tugalsan\api\desktop\server\TS_DesktopPane.class
 com\tugalsan\api\desktop\server\TS_DesktopWindowUtils.class
 com\tugalsan\api\desktop\server\TS_DesktopResourceUtils.class
 module-info.class
