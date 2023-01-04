@@ -18,18 +18,18 @@ public class TS_DesktopPathUtils {
         DIRECTORIES_ONLY, FILES_ONLY, FILES_AND_DIRECTORIES
     }
 
-    public static Optional<Path> chooseFiles(Optional<String> title, Optional<Path> initFolder, String... acceptedFileTypes) {
+    public static Optional<Path> chooseFiles(String title, Optional<Path> initFolder, String... acceptedFileTypes) {
         return choose(title, initFolder, Type.FILES_ONLY, acceptedFileTypes);
     }
 
-    public static Optional<Path> chooseFileOrFolder(Optional<String> title, Optional<Path> initFolder, Type type) {
+    public static Optional<Path> chooseFileOrFolder(String title, Optional<Path> initFolder, Type type) {
         return choose(title, initFolder, type);
     }
 
-    private static Optional<Path> choose(Optional<String> title, Optional<Path> initFolder, Type type, String... acceptedFileTypes) {
+    private static Optional<Path> choose(String title, Optional<Path> initFolder, Type type, String... acceptedFileTypes) {
         var c = new JFileChooser();
+        c.setDialogTitle(title);
         c.setCurrentDirectory(initFolder.isEmpty() ? new File(".") : initFolder.get().toFile());
-        c.setDialogTitle(title.isEmpty() ? TS_DesktopPathUtils.class.getSimpleName() : title.get());
         switch (type) {
             case DIRECTORIES_ONLY:
                 c.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
