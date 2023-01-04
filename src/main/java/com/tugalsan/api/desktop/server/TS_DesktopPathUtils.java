@@ -1,7 +1,12 @@
 package com.tugalsan.api.desktop.server;
 
+import java.io.File;
 import java.nio.file.*;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Optional;
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
 
 public class TS_DesktopPathUtils {
 
@@ -9,23 +14,55 @@ public class TS_DesktopPathUtils {
         return Path.of("").toAbsolutePath().normalize();
     }
 
-    public static Path chooseFolder() {
-        return chooseFolder(null);
+    public static enum Type {
+        DIRECTORIES_ONLY, FILES_ONLY, FILES_AND_DIRECTORIES
     }
 
-    public static Path chooseFolder(Path initFolder) {
-        var chooser = new JFileChooser();
-        chooser.setCurrentDirectory(initFolder == null ? new java.io.File(".") : initFolder.toFile());
-        chooser.setDialogTitle("title");
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        chooser.setAcceptAllFileFilterUsed(false);
-        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-//            System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
-//            System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
-        } else {
-//            System.out.println("No Selection ");
-            return null;
+    public static Optional<Path> chooseFiles(Optional<String> title, Optional<Path> initFolder, String... acceptedFileTypes) {
+        return choose(title, initFolder, Type.FILES_ONLY, acceptedFileTypes);
+    }
+
+    public static Optional<Path> chooseFileOrFolder(Optional<String> title, Optional<Path> initFolder, Type type) {
+        return choose(title, initFolder, type);
+    }
+
+    private static Optional<Path> choose(Optional<String> title, Optional<Path> initFolder, Type type, String... acceptedFileTypes) {
+        var c = new JFileChooser();
+        c.setCurrentDirectory(initFolder.isEmpty() ? new File(".") : initFolder.get().toFile());
+        c.setDialogTitle(title.isEmpty() ? TS_DesktopPathUtils.class.getSimpleName() : title.get());
+        switch (type) {
+            case DIRECTORIES_ONLY:
+                c.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                break;
+            case FILES_ONLY:
+                c.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                break;
+            default:
+                c.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         }
-        return chooser.getSelectedFile().toPath();
+        if (acceptedFileTypes.length == 0) {
+            c.setAcceptAllFileFilterUsed(false);
+        } else {
+            c.setFileFilter(new FileFilter() {
+
+                public String getDescription() {
+                    return "👓";
+                }
+
+                public boolean accept(File f) {
+                    if (f.isDirectory()) {
+                        return true;
+                    }
+                    var filenameLowerCase = f.getName().toLowerCase(Locale.ROOT);
+                    return Arrays.stream(acceptedFileTypes)
+                            .map(ft -> ft.toLowerCase(Locale.ROOT))
+                            .filter(ft -> filenameLowerCase.endsWith("." + ft))
+                            .findAny().isPresent();
+                }
+            });
+        }
+        return c.showOpenDialog(null) == JFileChooser.APPROVE_OPTION
+                ? Optional.of(c.getSelectedFile().toPath())
+                : Optional.empty();
     }
 }
