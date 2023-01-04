@@ -22,8 +22,12 @@ public class TS_DesktopPathUtils {
         return choose(title, initFolder, Type.FILES_ONLY, acceptedFileTypes);
     }
 
-    public static Optional<Path> chooseFileOrFolder(String title, Optional<Path> initFolder, Type type) {
-        return choose(title, initFolder, type);
+    public static Optional<Path> chooseFileOrDirectory(String title, Optional<Path> initFolder) {
+        return choose(title, initFolder, Type.FILES_AND_DIRECTORIES);
+    }
+
+    public static Optional<Path> chooseDirectory(String title, Optional<Path> initFolder) {
+        return choose(title, initFolder, Type.DIRECTORIES_ONLY);
     }
 
     private static Optional<Path> choose(String title, Optional<Path> initFolder, Type type, String... acceptedFileTypes) {
