@@ -1,4 +1,0 @@
---patch-module
-com.tugalsan.api.desktop=_
---add-reads
-com.tugalsan.api.desktop=ALL-UNNAMED
