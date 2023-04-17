@@ -6,6 +6,6 @@ import javax.swing.*;
 public class TS_DesktopThemeUtils {
 
     public static void setTheme() {
-        TGS_UnSafe.execute(() -> UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()));
+        TGS_UnSafe.run(() -> UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()));
     }
 }

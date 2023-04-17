@@ -42,7 +42,7 @@ public class TS_DesktopPaneUtils {
             for (var j = 0; j < rows_cols.value1 && ((i * rows_cols.value1) + j < count); j++) {
                 var f = visibleFrames.get((i * rows_cols.value1) + j);
                 if (!f.isClosed() && f.isIcon()) {
-                    TGS_UnSafe.execute(() -> f.setIcon(false), e -> TGS_UnSafe.doNothing());
+                    TGS_UnSafe.run(() -> f.setIcon(false), e -> TGS_UnSafe.runNothing());
                 }
                 desktopPane.getDesktopManager().resizeFrame(f, s.x, s.y, s.width, s.height);
                 s.x += s.width;
