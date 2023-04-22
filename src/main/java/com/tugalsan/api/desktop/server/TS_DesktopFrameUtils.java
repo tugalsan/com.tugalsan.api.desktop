@@ -1,5 +1,6 @@
 package com.tugalsan.api.desktop.server;
 
+import com.tugalsan.api.runnable.client.TGS_Runnable;
 import com.tugalsan.api.shape.client.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -17,13 +18,14 @@ public class TS_DesktopFrameUtils {
     }
 
     public static void exitOnClose(JFrame frame) {
-        frame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we) {
-                frame.dispose();
-                System.exit(0);
-            }
-        });
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.addWindowListener(new WindowAdapter() {
+//            @Override
+//            public void windowClosing(WindowEvent we) {
+//                frame.dispose();
+//                System.exit(0);
+//            }
+//        });
     }
 
     public static void setLoc(JFrame frame, TGS_ShapeRectangle<Integer> rect) {
@@ -41,4 +43,9 @@ public class TS_DesktopFrameUtils {
     public static void setContent(JFrame frame, Container content) {
         frame.setContentPane(content);
     }
+
+    public static void create(TGS_Runnable run) {
+        SwingUtilities.invokeLater(() -> run.run());
+    }
+
 }

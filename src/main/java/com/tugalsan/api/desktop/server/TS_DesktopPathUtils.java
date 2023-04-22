@@ -4,7 +4,6 @@ import com.tugalsan.api.charset.client.TGS_CharSetCast;
 import java.io.File;
 import java.nio.file.*;
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.Optional;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
