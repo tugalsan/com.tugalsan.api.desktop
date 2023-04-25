@@ -4,11 +4,10 @@ import com.tugalsan.api.cast.client.TGS_CastUtils;
 import java.awt.*;
 import java.util.Optional;
 import javax.swing.*;
-import javax.swing.text.NumberFormatter;
 
 public class TS_DesktopDialogInputNumberGUI extends JPanel {
 
-    final private JFormattedTextField tf = new JFormattedTextField(new NumberFormatter());
+    final private JTextField tf = new JTextField();
     final private JLabel lbl = new JLabel();
     private boolean focusedAlready;
 
