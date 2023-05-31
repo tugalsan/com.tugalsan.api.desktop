@@ -1,6 +1,6 @@
 module com.tugalsan.api.desktop {
     requires java.desktop;
-    requires com.tugalsan.api.pack;
+    requires com.tugalsan.api.tuple;
     requires com.tugalsan.api.shape;
     requires com.tugalsan.api.runnable;
     requires com.tugalsan.api.unsafe;

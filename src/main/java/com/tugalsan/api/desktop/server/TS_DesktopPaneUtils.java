@@ -1,6 +1,6 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.pack.client.*;
+import com.tugalsan.api.tuple.client.*;
 import com.tugalsan.api.shape.client.*;
 import com.tugalsan.api.unsafe.client.*;
 import java.awt.*;
@@ -24,7 +24,7 @@ public class TS_DesktopPaneUtils {
         // Determine the necessary grid size
         var count = visibleFrames.size();
         var sqrt = (int) Math.sqrt(count);
-        TGS_Pack2<Integer, Integer> rows_cols = new TGS_Pack2();
+        TGS_Tuple2<Integer, Integer> rows_cols = new TGS_Tuple2();
         rows_cols.value0 = sqrt;
         rows_cols.value1 = sqrt;
         if (rows_cols.value0 * rows_cols.value1 < count) {
