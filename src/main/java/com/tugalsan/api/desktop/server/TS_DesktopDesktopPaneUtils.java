@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.stream.*;
 import javax.swing.*;
 
-public class TS_DesktopPaneUtils {
+public class TS_DesktopDesktopPaneUtils {
 
     public static void remove(JDesktopPane desktopPane, Component comp) {
         desktopPane.remove(comp);
