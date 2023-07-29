@@ -56,7 +56,7 @@ public class TS_DesktopWindowAndFrameUtils {
         frame.setBackground(new Color(100, 100, 100, 50));
     }
 
-    public static void setTitleSizeCenterWithMenuBar(String title, JFrame frame, JMenuBar menuBar) {
+    public static void setTitleSizeCenterWithMenuBar(JFrame frame, String title, JMenuBar menuBar) {
         frame.setTitle(title);
         frame.setJMenuBar(menuBar);
         frame.setSize(500, 500 + menuBar.getHeight());
