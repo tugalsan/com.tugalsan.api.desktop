@@ -56,6 +56,16 @@ public class TS_DesktopWindowAndFrameUtils {
         frame.setBackground(new Color(100, 100, 100, 50));
     }
 
+    public static void setUnDecoratedTransparent(JFrame frame) {
+        frame.setUndecorated(true);
+        frame.setBackground(new Color(0, 0, 0, 0));
+    }
+
+    public static Rectangle getUnDecoratedRectangleWithoutMenubar(JFrame frame) {
+        var menuBar = frame.getJMenuBar();
+        return new Rectangle(frame.getX() + 2, frame.getY() + 2 + menuBar.getHeight(), frame.getWidth() - 4, frame.getHeight() - 4 - menuBar.getHeight());
+    }
+
     public static void setTitleSizeCenterWithMenuBar(JFrame frame, String title, JMenuBar menuBar) {
         frame.setTitle(title);
         frame.setJMenuBar(menuBar);
