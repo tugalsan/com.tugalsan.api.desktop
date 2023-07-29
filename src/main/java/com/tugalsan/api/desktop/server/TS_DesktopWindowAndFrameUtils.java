@@ -51,13 +51,15 @@ public class TS_DesktopWindowAndFrameUtils {
         frame.setContentPane(content);
     }
 
-    public static void setUnDecoratedBlack(JFrame frame) {
+    public static void initUnDecorated(JFrame frame) {
         frame.setUndecorated(true);
+    }
+
+    public static void setBackgroundTransparentBlack(JFrame frame) {
         frame.setBackground(new Color(100, 100, 100, 50));
     }
 
     public static void setUnDecoratedTransparent(JFrame frame) {
-        frame.setUndecorated(true);
         frame.setBackground(new Color(0, 0, 0, 0));
     }
 
