@@ -1,6 +1,8 @@
 package com.tugalsan.api.desktop.server;
 
 import com.tugalsan.api.charset.client.TGS_CharSetCast;
+import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import java.awt.Desktop;
 import java.io.File;
 import java.nio.file.*;
 import java.util.Arrays;
@@ -77,5 +79,15 @@ public class TS_DesktopPathUtils {
         return c.showSaveDialog(null) == JFileChooser.APPROVE_OPTION
                 ? Optional.of(c.getSelectedFile().toPath())
                 : Optional.empty();
+    }
+
+    public static boolean run(Path file) {
+        return TGS_UnSafe.call(() -> {
+            Desktop.getDesktop().open(file.toFile());
+            return true;
+        }, e -> {
+            e.printStackTrace();
+            return false;
+        });
     }
 }
