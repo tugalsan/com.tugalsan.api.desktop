@@ -2,6 +2,7 @@ package com.tugalsan.api.desktop.server;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import javax.swing.JComponent;
@@ -27,8 +28,9 @@ public class TS_DesktopFrameResizer implements MouseInputListener {
     private int ix, iy;
     private int iw, ih;
 
-    public void fixIt() {
+    public Rectangle fixIt_getRectangleWithoutMenuBar() {
         started = true;
+        return TS_DesktopWindowAndFrameUtils.getUnDecoratedRectangleWithoutMenubar(frame);
     }
 
     int tx, ty, tw, th;
