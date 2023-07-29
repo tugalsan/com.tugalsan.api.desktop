@@ -69,4 +69,13 @@ public class TS_DesktopPathUtils {
                 ? Optional.of(c.getSelectedFile().toPath())
                 : Optional.empty();
     }
+
+    public static Optional<Path> save(String title, Optional<Path> initFolder) {
+        var c = new JFileChooser();
+        c.setDialogTitle(title);
+        c.setCurrentDirectory(initFolder.isEmpty() ? new File(".") : initFolder.get().toFile());
+        return c.showSaveDialog(null) == JFileChooser.APPROVE_OPTION
+                ? Optional.of(c.getSelectedFile().toPath())
+                : Optional.empty();
+    }
 }
