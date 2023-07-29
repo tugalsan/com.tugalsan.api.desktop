@@ -50,4 +50,25 @@ public class TS_DesktopWindowAndFrameUtils {
     public static void setContent(JFrame frame, Container content) {
         frame.setContentPane(content);
     }
+
+    public static void setUnDecoratedBlack(JFrame frame) {
+        frame.setUndecorated(true);
+        frame.setBackground(new Color(100, 100, 100, 50));
+    }
+
+    public static void setTitleSizeCenterWithMenuBar(String title, JFrame frame, JMenuBar menuBar) {
+        frame.setTitle(title);
+        frame.setJMenuBar(menuBar);
+        frame.setSize(500, 500 + menuBar.getHeight());
+        frame.setLocationRelativeTo(null);
+    }
+
+    public static void setBorderRed(JFrame frame) {
+        frame.getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+    }
+
+    public static void showAlwaysInTop(JFrame frame, boolean alwaysOnTop) {
+        frame.setAlwaysOnTop(alwaysOnTop);
+        frame.setVisible(true);
+    }
 }
