@@ -7,7 +7,7 @@ import javax.swing.event.MenuListener;
 
 public class TS_DesktopJMenuButton extends JMenu {
 
-    public TS_DesktopJMenuButton(String title, TGS_RunnableType1<TS_DesktopJMenuButton> onSelected) {
+    private TS_DesktopJMenuButton(String title, TGS_RunnableType1<TS_DesktopJMenuButton> onSelected) {
         super(title);
         addMenuListener(new MenuListener() {
             @Override
