@@ -1,18 +1,18 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.runnable.client.TGS_Runnable;
+import com.tugalsan.api.runnable.client.TGS_RunnableType1;
 import javax.swing.JMenu;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
 public class TS_DesktopJMenuButton extends JMenu {
 
-    public TS_DesktopJMenuButton(String title, TGS_Runnable onSelected) {
+    public TS_DesktopJMenuButton(String title, TGS_RunnableType1<TS_DesktopJMenuButton> onSelected) {
         super(title);
         addMenuListener(new MenuListener() {
             @Override
             public void menuSelected(MenuEvent e) {
-                onSelected.run();
+                onSelected.run(TS_DesktopJMenuButton.this);
             }
 
             @Override
