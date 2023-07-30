@@ -24,4 +24,8 @@ public class TS_DesktopJMenuButton extends JMenu {
             }
         });
     }
+
+    public static TS_DesktopJMenuButton of(String title, TGS_RunnableType1<TS_DesktopJMenuButton> onSelected) {
+        return new TS_DesktopJMenuButton(title, onSelected);
+    }
 }
