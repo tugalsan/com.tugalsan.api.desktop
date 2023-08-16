@@ -14,6 +14,15 @@ public class TS_DesktopDialogInputListUtils {
     }
 
     public static Optional<Integer> show(Component parent, String title, String message, int defaultIdx, List<String> options) {
+        if (options.isEmpty()) {
+            return Optional.empty();
+        }
+        if (defaultIdx < 0) {
+            defaultIdx = 0;
+        }
+        if (defaultIdx > options.size()) {
+            return Optional.empty();
+        }
         var result = JOptionPane.showInputDialog(
                 parent,
                 message,
