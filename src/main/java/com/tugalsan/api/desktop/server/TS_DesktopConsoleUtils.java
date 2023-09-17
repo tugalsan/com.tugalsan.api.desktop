@@ -8,8 +8,7 @@ public class TS_DesktopConsoleUtils {
         return System.console();
     }
 
-    public static String readPassword(String msg) {
-        var console = System.console();
+    public static String readPassword(Console console, String msg) {
         char[] passwordArray = console.readPassword(msg);
         return new String(passwordArray);
     }
