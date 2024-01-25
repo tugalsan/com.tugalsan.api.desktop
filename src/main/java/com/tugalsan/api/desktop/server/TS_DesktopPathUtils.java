@@ -37,13 +37,11 @@ public class TS_DesktopPathUtils {
         c.setDialogTitle(title);
         c.setCurrentDirectory(initFolder.isEmpty() ? new File(".") : initFolder.get().toFile());
         switch (type) {
-            case DIRECTORIES_ONLY:
+            case DIRECTORIES_ONLY ->
                 c.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                break;
-            case FILES_ONLY:
+            case FILES_ONLY ->
                 c.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                break;
-            default:
+            default ->
                 c.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         }
         if (acceptedFileTypes.length == 0) {
@@ -51,10 +49,12 @@ public class TS_DesktopPathUtils {
         } else {
             c.setFileFilter(new FileFilter() {
 
+                @Override
                 public String getDescription() {
                     return "👓";
                 }
 
+                @Override
                 public boolean accept(File f) {
                     if (f.isDirectory()) {
                         return true;

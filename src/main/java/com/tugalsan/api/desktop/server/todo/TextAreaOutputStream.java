@@ -55,22 +55,27 @@ public class TextAreaOutputStream extends OutputStream {
         }
     }
 
+    @Override
     public synchronized void close() {
         appender = null;
     }
 
+    @Override
     public synchronized void flush() {
     }
 
+    @Override
     public synchronized void write(int val) {
         oneByte[0] = (byte) val;
         write(oneByte, 0, 1);
     }
 
+    @Override
     public synchronized void write(byte[] ba) {
         write(ba, 0, ba.length);
     }
 
+    @Override
     public synchronized void write(byte[] ba, int str, int len) {
         if (appender != null) {
             appender.append(bytesToString(ba, str, len));
@@ -109,7 +114,7 @@ public class TextAreaOutputStream extends OutputStream {
         }
 
         synchronized void append(String val) {
-            boolean eol = val.endsWith(EOL1) || val.endsWith(EOL2);
+            var eol = val.endsWith(EOL1) || val.endsWith(EOL2);
 
             line.append(val);
             while (line.length() > LINE_MAX) {
@@ -148,7 +153,7 @@ public class TextAreaOutputStream extends OutputStream {
 
         @Override
         public synchronized void run() {// MUST BE THE ONLY METHOD THAT TOUCHES textArea!
-            int don = 0;
+            var don = 0;
 
             if (clear) {
                 lengths.clear();
@@ -157,7 +162,7 @@ public class TextAreaOutputStream extends OutputStream {
                 clear = false;
             }
 
-            for (String lin : lines) {
+            for (var lin : lines) {
                 don += 1;
                 lengths.addLast(lin.length());
                 if (lengths.size() >= maxLines) {

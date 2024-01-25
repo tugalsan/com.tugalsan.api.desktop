@@ -7,7 +7,6 @@ import com.tugalsan.api.thread.server.async.TS_ThreadAsync;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.OutputStream;
-import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -53,7 +52,7 @@ public class JComponentOutputStream extends OutputStream {
     public static JComponent pane() {
         var ta = new JTextArea();
         var cos = new JComponentOutputStream(ta, new JComponentHandler() {
-            private StringBuilder sb = new StringBuilder();
+            private final StringBuilder sb = new StringBuilder();
 
             @Override
             public void setText(JComponent swingComponent, String text) {
@@ -115,6 +114,7 @@ public class JComponentOutputStream extends OutputStream {
         }
     }
 
+    @Override
     public void close() {
         jcosLock.lock();
         try {
@@ -124,6 +124,7 @@ public class JComponentOutputStream extends OutputStream {
         }
     }
 
+    @Override
     public void flush() {
         // sstosLock.lock();
         // try {
@@ -133,6 +134,7 @@ public class JComponentOutputStream extends OutputStream {
         // }
     }
 
+    @Override
     public void write(int val) {
         jcosLock.lock();
         try {
@@ -143,6 +145,7 @@ public class JComponentOutputStream extends OutputStream {
         }
     }
 
+    @Override
     public void write(byte[] ba) {
         jcosLock.lock();
         try {
@@ -152,6 +155,7 @@ public class JComponentOutputStream extends OutputStream {
         }
     }
 
+    @Override
     public void write(byte[] ba, int str, int len) {
         jcosLock.lock();
         try {
@@ -183,9 +187,9 @@ public class JComponentOutputStream extends OutputStream {
         private boolean clear;
         private boolean queue;
 
-        private Lock appenderLock;
+        private final Lock appenderLock;
 
-        private JComponentHandler handler;
+        private final JComponentHandler handler;
 
         Appender(JComponent cpt, int maxlin, JComponentHandler hndlr) {
             appenderLock = new ReentrantLock();
@@ -233,13 +237,14 @@ public class JComponentOutputStream extends OutputStream {
         }
 
         // MUST BE THE ONLY METHOD THAT TOUCHES the JComponent!
+        @Override
         public void run() {
             appenderLock.lock();
             try {
                 if (clear) {
                     handler.setText(swingComponent, "");
                 }
-                for (String val : values) {
+                for (var val : values) {
                     curLength += val.length();
                     if (val.endsWith(EOL1) || val.endsWith(EOL2)) {
                         if (lengths.size() >= maxLines) {
