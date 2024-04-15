@@ -1,6 +1,6 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.unsafe.client.*;
+import com.tugalsan.api.union.client.TGS_UnionExcuseVoid;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.*;
@@ -8,8 +8,13 @@ import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
 public class TS_DesktopThemeUtils {
 
-    public static void setTheme() {
-        TGS_UnSafe.run(() -> UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()));
+    public static TGS_UnionExcuseVoid setTheme() {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            return TGS_UnionExcuseVoid.ofVoid();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            return TGS_UnionExcuseVoid.ofExcuse(ex);
+        }
     }
 
     public static void setThemeDarkLAF(Component comp) {

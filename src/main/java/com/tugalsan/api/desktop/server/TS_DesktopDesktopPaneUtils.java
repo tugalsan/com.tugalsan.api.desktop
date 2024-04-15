@@ -1,9 +1,9 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.tuple.client.*;
 import com.tugalsan.api.shape.client.*;
-import com.tugalsan.api.unsafe.client.*;
+import com.tugalsan.api.union.client.TGS_UnionExcuseVoid;
 import java.awt.*;
+import java.beans.PropertyVetoException;
 import java.util.*;
 import java.util.stream.*;
 import javax.swing.*;
@@ -14,42 +14,46 @@ public class TS_DesktopDesktopPaneUtils {
         desktopPane.remove(comp);
     }
 
-    public static void tiltWindows(JDesktopPane desktopPane) {
+    public static TGS_UnionExcuseVoid tiltWindows(JDesktopPane desktopPane) {
         var visibleFrames = Arrays.stream(desktopPane.getAllFrames())
                 .filter(f -> f.isVisible())
                 .collect(Collectors.toCollection(ArrayList::new));
         if (visibleFrames.isEmpty()) {
-            return;
+            return TGS_UnionExcuseVoid.ofVoid();
         }
         // Determine the necessary grid size
         var count = visibleFrames.size();
         var sqrt = (int) Math.sqrt(count);
-        TGS_Tuple2<Integer, Integer> rows_cols = new TGS_Tuple2();
-        rows_cols.value0 = sqrt;
-        rows_cols.value1 = sqrt;
-        if (rows_cols.value0 * rows_cols.value1 < count) {
-            rows_cols.value1++;
-            if (rows_cols.value0 * rows_cols.value1 < count) {
-                rows_cols.value0++;
+        var rows = sqrt;
+        var cols = sqrt;
+        if (rows * cols < count) {
+            cols++;
+            if (rows * cols < count) {
+                rows++;
             }
         }
         // Define some initial values for size & location.
         var size = desktopPane.getSize();
-        TGS_ShapeRectangle<Integer> s = new TGS_ShapeRectangle(0, 0, size.width / rows_cols.value1, size.height / rows_cols.value0);
+        TGS_ShapeRectangle<Integer> s = new TGS_ShapeRectangle(0, 0, size.width / cols, size.height / rows);
         // Iterate over the frames, deiconifying any iconified frames and then
         // relocating & resizing each.
-        IntStream.range(0, rows_cols.value0).forEachOrdered(i -> {
-            for (var j = 0; j < rows_cols.value1 && ((i * rows_cols.value1) + j < count); j++) {
-                var f = visibleFrames.get((i * rows_cols.value1) + j);
+        for (var i = 0; i < rows; i++) {
+            for (var j = 0; j < cols && ((i * cols) + j < count); j++) {
+                var f = visibleFrames.get((i * cols) + j);
                 if (!f.isClosed() && f.isIcon()) {
-                    TGS_UnSafe.run(() -> f.setIcon(false), e -> TGS_UnSafe.runNothing());
+                    try {
+                        f.setIcon(false);
+                    } catch (PropertyVetoException ex) {
+                        return TGS_UnionExcuseVoid.ofExcuse(ex);
+                    }
                 }
                 desktopPane.getDesktopManager().resizeFrame(f, s.x, s.y, s.width, s.height);
                 s.x += s.width;
             }
             s.y += s.height; // start the next row
             s.x = 0;
-        });
+        }
+        return TGS_UnionExcuseVoid.ofVoid();
     }
 
     public static void paintComponent(JDesktopPane pane, Graphics g, Image imgBack) {

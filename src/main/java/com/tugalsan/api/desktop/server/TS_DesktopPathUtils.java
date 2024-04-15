@@ -1,9 +1,10 @@
 package com.tugalsan.api.desktop.server;
 
 import com.tugalsan.api.charset.client.TGS_CharSetCast;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.union.client.TGS_UnionExcuseVoid;
 import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.*;
 import java.util.Arrays;
 import java.util.Optional;
@@ -81,13 +82,12 @@ public class TS_DesktopPathUtils {
                 : Optional.empty();
     }
 
-    public static boolean run(Path file) {
-        return TGS_UnSafe.call(() -> {
+    public static TGS_UnionExcuseVoid run(Path file) {
+        try {
             Desktop.getDesktop().open(file.toFile());
-            return true;
-        }, e -> {
-            e.printStackTrace();
-            return false;
-        });
+            return TGS_UnionExcuseVoid.ofVoid();
+        } catch (IOException ex) {
+            return TGS_UnionExcuseVoid.ofExcuse(ex);
+        }
     }
 }

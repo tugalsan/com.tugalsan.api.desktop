@@ -1,8 +1,8 @@
 package com.tugalsan.api.desktop.server;
 
 import com.tugalsan.api.cast.client.TGS_CastUtils;
+import com.tugalsan.api.union.client.TGS_UnionExcuse;
 import java.awt.*;
-import java.util.Optional;
 import javax.swing.*;
 
 public class TS_DesktopDialogInputNumberGUI extends JPanel {
@@ -37,8 +37,7 @@ public class TS_DesktopDialogInputNumberGUI extends JPanel {
         this(null);
     }
 
-    public Optional<Integer> getNumber() {
-        var val = TGS_CastUtils.toInteger(tf.getText());
-        return val == null ? Optional.empty() : Optional.of(val);
+    public TGS_UnionExcuse<Integer> getNumber() {
+        return TGS_CastUtils.toInteger(tf.getText());
     }
 }
