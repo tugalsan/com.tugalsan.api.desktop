@@ -1,6 +1,5 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.tuple.client.*;
 import com.tugalsan.api.shape.client.*;
 import com.tugalsan.api.unsafe.client.*;
 import java.awt.*;
@@ -24,23 +23,24 @@ public class TS_DesktopDesktopPaneUtils {
         // Determine the necessary grid size
         var count = visibleFrames.size();
         var sqrt = (int) Math.sqrt(count);
-        TGS_Tuple2<Integer, Integer> rows_cols = new TGS_Tuple2();
-        rows_cols.value0 = sqrt;
-        rows_cols.value1 = sqrt;
-        if (rows_cols.value0 * rows_cols.value1 < count) {
-            rows_cols.value1++;
-            if (rows_cols.value0 * rows_cols.value1 < count) {
-                rows_cols.value0++;
+        var wrap = new Object() {
+            int rows = sqrt;
+            int cols = sqrt;
+        };
+        if (wrap.rows * wrap.cols < count) {
+            wrap.cols++;
+            if (wrap.rows * wrap.cols < count) {
+                wrap.rows++;
             }
         }
         // Define some initial values for size & location.
         var size = desktopPane.getSize();
-        TGS_ShapeRectangle<Integer> s = new TGS_ShapeRectangle(0, 0, size.width / rows_cols.value1, size.height / rows_cols.value0);
+        TGS_ShapeRectangle<Integer> s = new TGS_ShapeRectangle(0, 0, size.width / wrap.cols, size.height / wrap.rows);
         // Iterate over the frames, deiconifying any iconified frames and then
         // relocating & resizing each.
-        IntStream.range(0, rows_cols.value0).forEachOrdered(i -> {
-            for (var j = 0; j < rows_cols.value1 && ((i * rows_cols.value1) + j < count); j++) {
-                var f = visibleFrames.get((i * rows_cols.value1) + j);
+        IntStream.range(0, wrap.rows).forEachOrdered(i -> {
+            for (var j = 0; j < wrap.cols && ((i * wrap.cols) + j < count); j++) {
+                var f = visibleFrames.get((i * wrap.cols) + j);
                 if (!f.isClosed() && f.isIcon()) {
                     TGS_UnSafe.run(() -> f.setIcon(false), e -> TGS_UnSafe.runNothing());
                 }
