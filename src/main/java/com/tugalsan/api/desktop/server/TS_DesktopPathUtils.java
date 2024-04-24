@@ -59,9 +59,9 @@ public class TS_DesktopPathUtils {
                     if (f.isDirectory()) {
                         return true;
                     }
-                    var filenameLowerCase = TGS_CharSet.cmn().languageDefault().toLowerCase(f.getName());
+                    var filenameLowerCase = TGS_CharSetCast.current().toLowerCase(f.getName());
                     return Arrays.stream(acceptedFileTypes)
-                            .map(ft -> TGS_CharSet.cmn().languageDefault().toLowerCase(ft))
+                            .map(ft -> TGS_CharSetCast.current().toLowerCase(ft))
                             .filter(ft -> filenameLowerCase.endsWith("." + ft))
                             .findAny().isPresent();
                 }
