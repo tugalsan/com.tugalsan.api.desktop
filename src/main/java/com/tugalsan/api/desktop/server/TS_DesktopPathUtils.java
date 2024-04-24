@@ -1,6 +1,6 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.charset.client.TGS_CharSetCast;
+import com.tugalsan.api.charset.client.TGS_CharSet;
 import com.tugalsan.api.unsafe.client.TGS_UnSafe;
 import java.awt.Desktop;
 import java.io.File;
@@ -59,9 +59,9 @@ public class TS_DesktopPathUtils {
                     if (f.isDirectory()) {
                         return true;
                     }
-                    var filenameLowerCase = TGS_CharSetCast.toLocaleLowerCase(f.getName());
+                    var filenameLowerCase = TGS_CharSet.cmn().languageDefault().toLowerCase(f.getName());
                     return Arrays.stream(acceptedFileTypes)
-                            .map(ft -> TGS_CharSetCast.toLocaleLowerCase(ft))
+                            .map(ft -> TGS_CharSet.cmn().languageDefault().toLowerCase(ft))
                             .filter(ft -> filenameLowerCase.endsWith("." + ft))
                             .findAny().isPresent();
                 }
