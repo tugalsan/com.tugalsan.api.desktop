@@ -2,6 +2,8 @@ package com.tugalsan.api.desktop.server;
 
 import com.tugalsan.api.charset.client.TGS_CharSet;
 import com.tugalsan.api.charset.client.TGS_CharSetCast;
+import com.tugalsan.api.union.client.TGS_UnionExcuse;
+import com.tugalsan.api.union.client.TGS_UnionExcuseVoid;
 import com.tugalsan.api.unsafe.client.TGS_UnSafe;
 import java.awt.Desktop;
 import java.io.File;
@@ -21,19 +23,19 @@ public class TS_DesktopPathUtils {
         DIRECTORIES_ONLY, FILES_ONLY, FILES_AND_DIRECTORIES
     }
 
-    public static Optional<Path> chooseFiles(String title, Optional<Path> initFolder, String... acceptedFileTypes) {
+    public static TGS_UnionExcuse<Path> chooseFiles(String title, Optional<Path> initFolder, String... acceptedFileTypes) {
         return choose(title, initFolder, Type.FILES_ONLY, acceptedFileTypes);
     }
 
-    public static Optional<Path> chooseFileOrDirectory(String title, Optional<Path> initFolder) {
+    public static TGS_UnionExcuse<Path> chooseFileOrDirectory(String title, Optional<Path> initFolder) {
         return choose(title, initFolder, Type.FILES_AND_DIRECTORIES);
     }
 
-    public static Optional<Path> chooseDirectory(String title, Optional<Path> initFolder) {
+    public static TGS_UnionExcuse<Path> chooseDirectory(String title, Optional<Path> initFolder) {
         return choose(title, initFolder, Type.DIRECTORIES_ONLY);
     }
 
-    private static Optional<Path> choose(String title, Optional<Path> initFolder, Type type, String... acceptedFileTypes) {
+    private static TGS_UnionExcuse<Path> choose(String title, Optional<Path> initFolder, Type type, String... acceptedFileTypes) {
         var c = new JFileChooser();
         c.setDialogTitle(title);
         c.setCurrentDirectory(initFolder.isEmpty() ? new File(".") : initFolder.get().toFile());
@@ -68,27 +70,30 @@ public class TS_DesktopPathUtils {
                 }
             });
         }
-        return c.showOpenDialog(null) == JFileChooser.APPROVE_OPTION
-                ? Optional.of(c.getSelectedFile().toPath())
-                : Optional.empty();
+        var choice = c.showOpenDialog(null);
+        if (choice != JFileChooser.APPROVE_OPTION) {
+            return TGS_UnionExcuse.ofExcuse(TS_DesktopPathUtils.class.getSimpleName(), "choose", "choice!= JFileChooser.APPROVE_OPTION");
+        }
+        return TGS_UnionExcuse.of(c.getSelectedFile().toPath());
     }
 
-    public static Optional<Path> save(String title, Optional<Path> initFolder) {
+    public static TGS_UnionExcuse<Path> save(String title, Optional<Path> initFolder) {
         var c = new JFileChooser();
         c.setDialogTitle(title);
         c.setCurrentDirectory(initFolder.isEmpty() ? new File(".") : initFolder.get().toFile());
-        return c.showSaveDialog(null) == JFileChooser.APPROVE_OPTION
-                ? Optional.of(c.getSelectedFile().toPath())
-                : Optional.empty();
+        var choice = c.showSaveDialog(null);
+        if (choice != JFileChooser.APPROVE_OPTION) {
+            return TGS_UnionExcuse.ofExcuse(TS_DesktopPathUtils.class.getSimpleName(), "save", "choice!= JFileChooser.APPROVE_OPTION");
+        }
+        return TGS_UnionExcuse.of(c.getSelectedFile().toPath());
     }
 
-    public static boolean run(Path file) {
+    public static TGS_UnionExcuseVoid run(Path file) {
         return TGS_UnSafe.call(() -> {
             Desktop.getDesktop().open(file.toFile());
-            return true;
+            return TGS_UnionExcuseVoid.ofVoid();
         }, e -> {
-            e.printStackTrace();
-            return false;
+            return TGS_UnionExcuseVoid.ofExcuse(e);
         });
     }
 }

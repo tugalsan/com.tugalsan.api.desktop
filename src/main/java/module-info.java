@@ -3,6 +3,7 @@ module com.tugalsan.api.desktop {
     requires com.tugalsan.api.console;
     requires com.tugalsan.api.thread;
     requires com.tugalsan.api.loremipsum;
+    requires com.tugalsan.api.union;
     requires com.tugalsan.api.shape;
     requires com.tugalsan.api.runnable;
     requires com.tugalsan.api.callable;

@@ -1,5 +1,6 @@
 package com.tugalsan.api.desktop.server;
 
+import com.tugalsan.api.union.client.TGS_UnionExcuse;
 import java.awt.Component;
 import java.util.List;
 import java.util.Objects;
@@ -9,34 +10,35 @@ import javax.swing.JOptionPane;
 
 public class TS_DesktopDialogInputListUtils {
 
-    public static Optional<Integer> show(Component parent, String title, String message, int defaultIdx, String... options) {
+    public static TGS_UnionExcuse<Integer> show(Component parent, String title, String message, int defaultIdx, String... options) {
         return show(parent, title, message, defaultIdx, List.of(options));
     }
 
-    public static Optional<Integer> show(Component parent, String title, String message, int defaultIdx, List<String> options) {
+    public static TGS_UnionExcuse<Integer> show(Component parent, String title, String message, int defaultIdx, List<String> options) {
         if (options.isEmpty()) {
-            return Optional.empty();
+            return TGS_UnionExcuse.ofExcuse(TS_DesktopDialogInputListUtils.class.getSimpleName(), "show", "options.isEmpty()");
         }
         if (defaultIdx < 0) {
             defaultIdx = 0;
         }
         if (defaultIdx > options.size()) {
-            return Optional.empty();
+            return TGS_UnionExcuse.ofExcuse(TS_DesktopDialogInputListUtils.class.getSimpleName(), "show", "defaultIdx > options.size()");
         }
-        var result = JOptionPane.showInputDialog(
+        var selected = JOptionPane.showInputDialog(
                 parent,
                 message,
-                title,
+                title,   
                 JOptionPane.PLAIN_MESSAGE,
                 null,
                 options.toArray(String[]::new),
                 options.get(defaultIdx)
         );
-        return result == null
-                ? Optional.empty()
-                : IntStream.range(0, options.size())
-                        .filter(i -> Objects.equals(options.get(i), result))
-                        .mapToObj(i -> Optional.of(i))
-                        .findAny().orElse(Optional.empty());
+        var selectedChoice = IntStream.range(0, options.size())
+                .filter(i -> Objects.equals(options.get(i), selected))
+                .findAny();
+        if (selectedChoice.isPresent()) {
+            return TGS_UnionExcuse.ofExcuse(TS_DesktopDialogInputListUtils.class.getSimpleName(), "show", "selectedChoice == null for selected:" + selected);
+        }
+        return TGS_UnionExcuse.of(selectedChoice.getAsInt());
     }
 }
