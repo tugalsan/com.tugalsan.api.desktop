@@ -1,13 +1,13 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.runnable.client.TGS_RunnableType1;
+import com.tugalsan.api.callable.client.TGS_CallableType1Void;
 import javax.swing.JMenu;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
 public class TS_DesktopJMenuButton extends JMenu {
 
-    private TS_DesktopJMenuButton(String title, TGS_RunnableType1<TS_DesktopJMenuButton> onSelected) {
+    private TS_DesktopJMenuButton(String title, TGS_CallableType1Void<TS_DesktopJMenuButton> onSelected) {
         super(title);
         addMenuListener(new MenuListener() {
             @Override
@@ -25,7 +25,7 @@ public class TS_DesktopJMenuButton extends JMenu {
         });
     }
 
-    public static TS_DesktopJMenuButton of(String title, TGS_RunnableType1<TS_DesktopJMenuButton> onSelected) {
+    public static TS_DesktopJMenuButton of(String title, TGS_CallableType1Void<TS_DesktopJMenuButton> onSelected) {
         return new TS_DesktopJMenuButton(title, onSelected);
     }
 }
