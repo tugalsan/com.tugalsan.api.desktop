@@ -3,7 +3,7 @@ package com.tugalsan.api.desktop.server;
 import java.awt.Component;
 import javax.swing.SwingUtilities;
 import com.tugalsan.api.callable.client.TGS_CallableType0;
-import com.tugalsan.api.callable.client.TGS_CallableType0Void;
+import com.tugalsan.api.callable.client.TGS_CallableType0_Run;
 
 public class TS_DesktopMainUtils {
 
@@ -14,7 +14,7 @@ public class TS_DesktopMainUtils {
         });
     }
 
-    public static void invokeLater(TGS_CallableType0Void run) {
+    public static void invokeLater(TGS_CallableType0_Run run) {
         SwingUtilities.invokeLater(() -> run.run());
     }
 }
