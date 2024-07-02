@@ -5,14 +5,20 @@ import java.awt.Color;
 import java.awt.Component;
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+import com.alee.laf.WebLookAndFeel;
 
 public class TS_DesktopThemeUtils {
 
-    public static void setTheme() {
+    public static void setThemeDefault() {
         TGS_UnSafe.run(() -> UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()));
     }
 
-    public static void setThemeDarkLAF(Component comp) {
+    public static void setThemeWebLokkAndFeel() {
+        WebLookAndFeel.install();
+    }
+
+    @Deprecated //see weblookandfeel
+    private static void setThemeDarkLAF(Component comp) {
         try {
             UIManager.setLookAndFeel(new NimbusLookAndFeel());
             UIManager.put("control", new Color(128, 128, 128));

@@ -1,11 +1,11 @@
 module com.tugalsan.api.desktop {
     requires java.desktop;
+    requires weblaf.ui;
     requires com.tugalsan.api.console;
     requires com.tugalsan.api.thread;
     requires com.tugalsan.api.loremipsum;
     requires com.tugalsan.api.union;
     requires com.tugalsan.api.shape;
-    
     requires com.tugalsan.api.function;
     requires com.tugalsan.api.unsafe;
     requires com.tugalsan.api.cast;

@@ -8,9 +8,10 @@ import com.tugalsan.api.function.client.TGS_Func;
 public class TS_DesktopMainUtils {
 
     public static void setThemeAndinvokeLaterAndFixTheme(TGS_Func_OutTyped<Component> component) {
-        TS_DesktopThemeUtils.setTheme();
+        TS_DesktopThemeUtils.setThemeDefault();
         TS_DesktopMainUtils.invokeLater(() -> {
-            TS_DesktopThemeUtils.setThemeDarkLAF(component.call());
+//            var comp = component.call();
+            TS_DesktopThemeUtils.setThemeWebLokkAndFeel();
         });
     }
 
