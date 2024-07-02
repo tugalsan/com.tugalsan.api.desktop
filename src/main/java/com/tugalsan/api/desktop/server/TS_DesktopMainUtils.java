@@ -10,8 +10,8 @@ public class TS_DesktopMainUtils {
     public static void setThemeAndinvokeLaterAndFixTheme(TGS_Func_OutTyped<Component> component) {
         TS_DesktopThemeUtils.setThemeDefault();
         TS_DesktopMainUtils.invokeLater(() -> {
-//            var comp = component.call();
-            TS_DesktopThemeUtils.setThemeWebLokkAndFeel();
+            var comp = component.call();
+            TS_DesktopThemeUtils.setThemeDarkLAF(comp);
         });
     }
 

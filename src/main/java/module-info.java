@@ -1,6 +1,5 @@
 module com.tugalsan.api.desktop {
     requires java.desktop;
-    requires weblaf.ui;
     requires com.tugalsan.api.console;
     requires com.tugalsan.api.thread;
     requires com.tugalsan.api.loremipsum;
