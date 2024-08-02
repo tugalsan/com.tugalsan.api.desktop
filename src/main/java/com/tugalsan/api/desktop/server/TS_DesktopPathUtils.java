@@ -1,6 +1,5 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.charset.client.TGS_CharSet;
 import com.tugalsan.api.charset.client.TGS_CharSetCast;
 import com.tugalsan.api.union.client.TGS_UnionExcuse;
 import com.tugalsan.api.union.client.TGS_UnionExcuseVoid;
