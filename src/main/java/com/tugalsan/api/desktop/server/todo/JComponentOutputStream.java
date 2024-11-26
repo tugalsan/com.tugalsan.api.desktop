@@ -1,6 +1,6 @@
 package com.tugalsan.api.desktop.server.todo;
 
-import com.tugalsan.api.console.server.TS_ConsoleUtils;
+import com.tugalsan.api.console.jdk.server.TS_ConsoleUtils;
 import com.tugalsan.api.loremipsum.client.TGS_LoremIpsum;
 import com.tugalsan.api.thread.server.TS_ThreadWait;
 import com.tugalsan.api.thread.server.async.TS_ThreadAsync;
