@@ -1,7 +1,7 @@
 package com.tugalsan.api.desktop.server;
 
 import com.tugalsan.api.union.client.TGS_UnionExcuse;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.maythrow.checkedexceptions.TGS_FuncMTCEUtils;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -12,7 +12,7 @@ public class TS_DesktopConsoleUtils {
 //    }
 
     public static TGS_UnionExcuse<String> readLine() {
-        return TGS_UnSafe.call(() -> {
+        return TGS_FuncMTCEUtils.call(() -> {
 //            if (System.console() != null) {//GRRALVM DOES NOT LIKE U
 //                return Optional.of(System.console().readLine());
 //            }
@@ -22,7 +22,7 @@ public class TS_DesktopConsoleUtils {
     }
 
     public static TGS_UnionExcuse<String> readPassword() {
-        return TGS_UnSafe.call(() -> {
+        return TGS_FuncMTCEUtils.call(() -> {
 //            if (System.console() != null) {//GRRALVM DOES NOT LIKE U
 //                return Optional.of(new String(System.console().readPassword()));
 //            }

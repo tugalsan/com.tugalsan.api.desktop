@@ -1,6 +1,7 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.unsafe.client.*;
+
+import com.tugalsan.api.function.client.maythrow.checkedexceptions.TGS_FuncMTCEUtils;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.*;
@@ -9,7 +10,7 @@ import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 public class TS_DesktopThemeUtils {
 
     public static void setThemeDefault() {
-        TGS_UnSafe.run(() -> UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()));
+        TGS_FuncMTCEUtils.run(() -> UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()));
     }
 
     public static void setThemeDarkLAF(Component comp) {

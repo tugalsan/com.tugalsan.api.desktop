@@ -2,8 +2,8 @@ package com.tugalsan.api.desktop.server.todo;
 
 import com.tugalsan.api.console.jdk.server.TS_ConsoleUtils;
 import com.tugalsan.api.loremipsum.client.TGS_LoremIpsum;
-import com.tugalsan.api.thread.server.TS_ThreadWait;
-import com.tugalsan.api.thread.server.async.TS_ThreadAsync;
+import com.tugalsan.api.thread.server.sync.TS_ThreadSyncWait;
+import com.tugalsan.api.thread.server.async.run.TS_ThreadAsyncRun;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.OutputStream;
@@ -35,17 +35,17 @@ public class JComponentOutputStream extends OutputStream {
         frame.setVisible(true);
         frame.setSize(800, 600);
 
-        TS_ThreadAsync.now(null, kt -> a());
-        TS_ThreadAsync.now(null, kt -> a());
-        TS_ThreadAsync.now(null, kt -> a());
-        TS_ThreadAsync.now(null, kt -> a());
-        TS_ThreadAsync.now(null, kt -> a());
+        TS_ThreadAsyncRun.now(null, kt -> a());
+        TS_ThreadAsyncRun.now(null, kt -> a());
+        TS_ThreadAsyncRun.now(null, kt -> a());
+        TS_ThreadAsyncRun.now(null, kt -> a());
+        TS_ThreadAsyncRun.now(null, kt -> a());
     }
 
     static void a() {
         IntStream.range(0, 1000).forEachOrdered(i -> {
             System.out.println(TGS_LoremIpsum.getWords(5, 20));
-            TS_ThreadWait.milliseconds200();
+            TS_ThreadSyncWait.milliseconds200();
         });
     }
 

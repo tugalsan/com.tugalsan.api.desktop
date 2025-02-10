@@ -3,7 +3,7 @@ package com.tugalsan.api.desktop.server;
 import com.tugalsan.api.charset.client.TGS_CharSetCast;
 import com.tugalsan.api.union.client.TGS_UnionExcuse;
 import com.tugalsan.api.union.client.TGS_UnionExcuseVoid;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.maythrow.checkedexceptions.TGS_FuncMTCEUtils;
 import java.awt.Desktop;
 import java.io.File;
 import java.nio.file.*;
@@ -88,7 +88,7 @@ public class TS_DesktopPathUtils {
     }
 
     public static TGS_UnionExcuseVoid run(Path file) {
-        return TGS_UnSafe.call(() -> {
+        return TGS_FuncMTCEUtils.call(() -> {
             Desktop.getDesktop().open(file.toFile());
             return TGS_UnionExcuseVoid.ofVoid();
         }, e -> {

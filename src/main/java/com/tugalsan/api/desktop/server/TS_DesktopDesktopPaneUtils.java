@@ -1,12 +1,13 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.function.client.TGS_Func;
 import com.tugalsan.api.shape.client.*;
-import com.tugalsan.api.unsafe.client.*;
+
 import java.awt.*;
 import java.util.*;
 import java.util.stream.*;
 import javax.swing.*;
+import com.tugalsan.api.function.client.maythrow.uncheckedexceptions.TGS_FuncMTUCE;
+import com.tugalsan.api.function.client.maythrow.checkedexceptions.TGS_FuncMTCEUtils;
 
 public class TS_DesktopDesktopPaneUtils {
 
@@ -43,7 +44,7 @@ public class TS_DesktopDesktopPaneUtils {
             for (var j = 0; j < wrap.cols && ((i * wrap.cols) + j < count); j++) {
                 var f = visibleFrames.get((i * wrap.cols) + j);
                 if (!f.isClosed() && f.isIcon()) {
-                    TGS_UnSafe.run(() -> f.setIcon(false), e -> TGS_Func.empty.run());
+                    TGS_FuncMTCEUtils.run(() -> f.setIcon(false), e -> TGS_FuncMTUCE.empty.run());
                 }
                 desktopPane.getDesktopManager().resizeFrame(f, s.x, s.y, s.width, s.height);
                 s.x += s.width;
