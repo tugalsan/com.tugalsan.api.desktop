@@ -38,7 +38,7 @@ public class TS_DesktopDialogInputNumberGUI extends JPanel {
     }
 
     public TGS_UnionExcuse<Integer> getNumber() {
-        var val = TGS_CastUtils.toInteger(tf.getText());
+        var val = TGS_CastUtils.toInteger(tf.getText()).orElse(null);
         if (val == null) {
             return TGS_UnionExcuse.ofExcuse(TS_DesktopDialogInputNumberGUI.class.getSimpleName(), "getNumber", "val == null");
         }
