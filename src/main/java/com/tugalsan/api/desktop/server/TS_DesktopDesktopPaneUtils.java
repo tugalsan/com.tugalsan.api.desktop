@@ -62,35 +62,29 @@ public class TS_DesktopDesktopPaneUtils {
         }
     }
 
+    //Everyttime internal_frame moves, keep it on the desktop_frame
     public static void keepInternalFramesInsideThePane(JDesktopPane pane) {
         pane.setDesktopManager(new DefaultDesktopManager() {
-            // This is called anytime a frame is moved. This
-            // implementation keeps the frame from leaving the desktop.
             @Override
-            public void dragFrame(JComponent f, int x, int y) {
-                if (f instanceof JInternalFrame frame) { // Deal only w/internal frames
-                    var desk = frame.getDesktopPane();
-                    var d = desk.getSize();
-                    // Nothing all that fancy below, just figuring out how to adjust
-                    // to keep the frame on the desktop.
-                    if (x < 0) { // too far left?
-                        x = 0; // flush against the left side
+            public void dragFrame(JComponent frame, int x, int y) {
+                if (frame instanceof JInternalFrame internalFrame) {
+                    var deskSize = internalFrame.getDesktopPane().getSize();
+                    if (x < 0) {
+                        x = 0;
                     } else {
-                        if (x + frame.getWidth() > d.width) { // too far right?
-                            x = d.width - frame.getWidth(); // flush against right side
+                        if (x + internalFrame.getWidth() > deskSize.width) {
+                            x = deskSize.width - internalFrame.getWidth();
                         }
                     }
-                    if (y < 0) { // too high?
-                        y = 0; // flush against the top
+                    if (y < 0) {
+                        y = 0;
                     } else {
-                        if (y + frame.getHeight() > d.height) { // too low?
-                            y = d.height - frame.getHeight(); // flush against the
-                            // bottom
+                        if (y + internalFrame.getHeight() > deskSize.height) {
+                            y = deskSize.height - internalFrame.getHeight();
                         }
                     }
                 }
-                // Pass along the (possibly cropped) values to the normal drag handler.
-                super.dragFrame(f, x, y);
+                super.dragFrame(frame, x, y);
             }
         });
     }
