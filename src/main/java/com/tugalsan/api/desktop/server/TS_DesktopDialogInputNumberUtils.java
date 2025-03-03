@@ -7,6 +7,10 @@ import javax.swing.*;
 
 public class TS_DesktopDialogInputNumberUtils {
 
+    private TS_DesktopDialogInputNumberUtils() {
+
+    }
+
     public static TGS_UnionExcuse<Integer> show(String title) {
         return show(null, title);
     }

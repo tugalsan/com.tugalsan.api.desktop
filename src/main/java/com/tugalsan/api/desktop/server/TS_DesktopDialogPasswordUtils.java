@@ -6,6 +6,10 @@ import javax.swing.*;
 
 public class TS_DesktopDialogPasswordUtils {
 
+    private TS_DesktopDialogPasswordUtils() {
+
+    }
+
     public static String show(String title) {
         return show(null, title);
     }

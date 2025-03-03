@@ -3,12 +3,14 @@ package com.tugalsan.api.desktop.server.todo;
 import com.tugalsan.api.console.jdk.server.TS_ConsoleUtils;
 import java.awt.*;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.regex.*;
 import java.util.List;
 import javax.swing.*;
 
 //https://stackoverflow.com/questions/342990/create-java-console-inside-a-gui-panel#comment43886110_343007
+@Deprecated //TODO
 public class TextAreaOutputStream extends OutputStream {
 
     public static void main() throws InterruptedException {
@@ -84,11 +86,7 @@ public class TextAreaOutputStream extends OutputStream {
 
     @SuppressWarnings("DM_DEFAULT_ENCODING")
     static private String bytesToString(byte[] ba, int str, int len) {
-        try {
-            return new String(ba, str, len, "UTF-8");
-        } catch (UnsupportedEncodingException thr) {
-            return new String(ba, str, len);
-        }
+        return new String(ba, str, len, StandardCharsets.UTF_8);
     }
 
     static class Appender implements Runnable {

@@ -95,44 +95,46 @@ public class TS_DesktopFrameResizer implements MouseInputListener {
         if (started) {
             return;
         }
-        if (pressed && !onedge) {
-            int x = arg0.getXOnScreen() - iwx, y = arg0.getYOnScreen() - iwy;
-            setLocation(x, y, true);
-        } else if (pressed && onedge) {
-            switch (edge) {
-                case 3 ->
-                    setSize(arg0.getXOnScreen() - (iw - iwx) - getX(true), getHeight(true), true);
-                case 2 ->
-                    setSize(getWidth(true), arg0.getYOnScreen() - (ih - iwy) - getY(true), true);
-                case 1 -> {
-                    setLocation(arg0.getXOnScreen(), getY(true), true);
-                    setSize(iw + ix - arg0.getXOnScreen(), getHeight(true), true);
-                }
-                case 4 -> {
-                    setLocation(getY(true), arg0.getYOnScreen(), true);
-                    setSize(getWidth(true), ih + iy - arg0.getYOnScreen(), true);
-                }
-                default -> {
+        if (pressed) {
+            if (!onedge) {
+                int x = arg0.getXOnScreen() - iwx, y = arg0.getYOnScreen() - iwy;
+                setLocation(x, y);
+            } else {
+                switch (edge) {
+                    case 3 ->
+                        setSize(arg0.getXOnScreen() - (iw - iwx) - getX(), getHeight());
+                    case 2 ->
+                        setSize(getWidth(), arg0.getYOnScreen() - (ih - iwy) - getY());
+                    case 1 -> {
+                        setLocation(arg0.getXOnScreen(), getY());
+                        setSize(iw + ix - arg0.getXOnScreen(), getHeight());
+                    }
+                    case 4 -> {
+                        setLocation(getY(), arg0.getYOnScreen());
+                        setSize(getWidth(), ih + iy - arg0.getYOnScreen());
+                    }
+                    default -> {
+                    }
                 }
             }
         }
-        if (getX(true) < 0) {
-            setLocation(0, getY(true), true);
+        if (getX() < 0) {
+            setLocation(0, getY());
         }
-        if (getY(true) < 0) {
-            setLocation(getX(true), 0, true);
+        if (getY() < 0) {
+            setLocation(getX(), 0);
         }
-        if (getX(true) + getWidth(true) > screenSize.width) {
-            setLocation(screenSize.width - getWidth(true), getY(true), true);
+        if (getX() + getWidth() > screenSize.width) {
+            setLocation(screenSize.width - getWidth(), getY());
         }
-        if (getY(true) + getHeight(true) > screenSize.height) {
-            setLocation(getX(true), screenSize.height - getHeight(true), true);
+        if (getY() + getHeight() > screenSize.height) {
+            setLocation(getX(), screenSize.height - getHeight());
         }
-        if (getWidth(true) > screenSize.width) {
-            setSize(screenSize.width, getHeight(true), true);
+        if (getWidth() > screenSize.width) {
+            setSize(screenSize.width, getHeight());
         }
-        if (getHeight(true) > screenSize.height) {
-            setSize(getWidth(true), screenSize.height, true);
+        if (getHeight() > screenSize.height) {
+            setSize(getWidth(), screenSize.height);
         }
         sendSizeChange();
         sendLocationChange();
@@ -156,29 +158,29 @@ public class TS_DesktopFrameResizer implements MouseInputListener {
         }
     }
 
-    public void setSize(int w, int h, boolean wait) {
+    public void setSize(int w, int h) {
         tw = w;
         th = h;
     }
 
-    public void setLocation(int x, int y, boolean wait) {
+    public void setLocation(int x, int y) {
         tx = x;
         ty = y;
     }
 
-    public int getWidth(boolean wait) {
+    public int getWidth() {
         return tw;
     }
 
-    public int getHeight(boolean wait) {
+    public int getHeight() {
         return th;
     }
 
-    public int getX(boolean wait) {
+    public int getX() {
         return tx;
     }
 
-    public int getY(boolean wait) {
+    public int getY() {
         return ty;
     }
 

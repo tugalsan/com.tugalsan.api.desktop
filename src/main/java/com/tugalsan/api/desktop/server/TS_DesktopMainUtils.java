@@ -7,6 +7,10 @@ import com.tugalsan.api.function.client.maythrow.uncheckedexceptions.TGS_FuncMTU
 
 public class TS_DesktopMainUtils {
 
+    private TS_DesktopMainUtils() {
+
+    }
+
     public static void setThemeAndinvokeLaterAndFixTheme(TGS_FuncMTUCE_OutTyped<Component> component) {
         TS_DesktopThemeUtils.setThemeDefault();
         TS_DesktopMainUtils.invokeLater(() -> {

@@ -4,11 +4,14 @@ import com.tugalsan.api.union.client.TGS_UnionExcuse;
 import java.awt.Component;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.IntStream;
 import javax.swing.JOptionPane;
 
 public class TS_DesktopDialogInputListUtils {
+
+    private TS_DesktopDialogInputListUtils() {
+
+    }
 
     public static TGS_UnionExcuse<Integer> show(Component parent, String title, String message, int defaultIdx, String... options) {
         return show(parent, title, message, defaultIdx, List.of(options));
@@ -27,7 +30,7 @@ public class TS_DesktopDialogInputListUtils {
         var selected = JOptionPane.showInputDialog(
                 parent,
                 message,
-                title,   
+                title,
                 JOptionPane.PLAIN_MESSAGE,
                 null,
                 options.toArray(String[]::new),

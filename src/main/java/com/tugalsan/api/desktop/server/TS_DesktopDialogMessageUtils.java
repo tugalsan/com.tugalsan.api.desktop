@@ -4,6 +4,10 @@ import javax.swing.*;
 
 public class TS_DesktopDialogMessageUtils {
 
+    private TS_DesktopDialogMessageUtils() {
+
+    }
+
     public static void show(String text) {
         JOptionPane.showMessageDialog(null, text);
     }

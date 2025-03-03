@@ -5,6 +5,10 @@ import javax.swing.*;
 
 public class TS_DesktopResourceUtils {
 
+    private TS_DesktopResourceUtils() {
+
+    }
+
     public static URL url(String loc) {
         return TS_DesktopResourceUtils.class.getResource(loc);
     }

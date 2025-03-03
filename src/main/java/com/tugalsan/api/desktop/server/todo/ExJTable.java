@@ -1,4 +1,4 @@
-package com.tugalsan.api.desktop.server;
+package com.tugalsan.api.desktop.server.todo;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
@@ -7,11 +7,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 
-public class TS_DesktopJTable {
+public class ExJTable {
 
     private final JTable table;
 
-    public TS_DesktopJTable() {
+    public ExJTable() {
         var rows = 3;
         var columns = 4;
         ArrayList<ArrayList<Integer>> tableList = new ArrayList<>();
@@ -47,6 +47,6 @@ public class TS_DesktopJTable {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new TS_DesktopJTable());
+        SwingUtilities.invokeLater(() -> new ExJTable());
     }
 }

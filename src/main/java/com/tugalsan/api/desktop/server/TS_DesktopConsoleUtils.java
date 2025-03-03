@@ -7,10 +7,13 @@ import java.io.InputStreamReader;
 
 public class TS_DesktopConsoleUtils {
 
+    private TS_DesktopConsoleUtils() {
+
+    }
+
 //    public static Console create() {//GRRALVM DOES NOT LIKE U
 //        return System.console();
 //    }
-
     public static TGS_UnionExcuse<String> readLine() {
         return TGS_FuncMTCEUtils.call(() -> {
 //            if (System.console() != null) {//GRRALVM DOES NOT LIKE U

@@ -7,7 +7,7 @@ import com.tugalsan.api.thread.server.async.run.TS_ThreadAsyncRun;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,6 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 //https://stackoverflow.com/questions/342990/create-java-console-inside-a-gui-panel#comment43886110_343007
+@Deprecated //TODO
 public class JComponentOutputStream extends OutputStream {
 
     public static void main() throws InterruptedException {
@@ -168,11 +169,7 @@ public class JComponentOutputStream extends OutputStream {
     }
 
     static private String bytesToString(byte[] ba, int str, int len) {
-        try {
-            return new String(ba, str, len, "UTF-8");
-        } catch (UnsupportedEncodingException thr) {
-            return new String(ba, str, len);
-        }
+        return new String(ba, str, len, StandardCharsets.UTF_8);
     }
 
     static class Appender implements Runnable {

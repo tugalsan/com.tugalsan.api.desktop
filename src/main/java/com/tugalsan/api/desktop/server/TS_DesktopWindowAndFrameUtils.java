@@ -6,6 +6,10 @@ import javax.swing.*;
 
 public class TS_DesktopWindowAndFrameUtils {
 
+    private TS_DesktopWindowAndFrameUtils() {
+
+    }
+
     public static void decorate(Window dialog) {
         dialog.setAlwaysOnTop(true);
         dialog.pack();

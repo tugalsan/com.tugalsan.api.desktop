@@ -11,13 +11,17 @@ import com.tugalsan.api.function.client.maythrow.checkedexceptions.TGS_FuncMTCEU
 
 public class TS_DesktopDesktopPaneUtils {
 
+    private TS_DesktopDesktopPaneUtils() {
+
+    }
+
     public static void remove(JDesktopPane desktopPane, Component comp) {
         desktopPane.remove(comp);
     }
 
     public static void tiltWindows(JDesktopPane desktopPane) {
         var visibleFrames = Arrays.stream(desktopPane.getAllFrames())
-                .filter(f -> f.isVisible())
+                .filter(JInternalFrame::isVisible)
                 .collect(Collectors.toCollection(ArrayList::new));
         if (visibleFrames.isEmpty()) {
             return;

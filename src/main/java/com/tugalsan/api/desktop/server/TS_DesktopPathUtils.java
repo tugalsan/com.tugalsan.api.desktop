@@ -14,6 +14,10 @@ import javax.swing.filechooser.FileFilter;
 
 public class TS_DesktopPathUtils {
 
+    private TS_DesktopPathUtils() {
+
+    }
+
     public static Path currentFolder() {
         return Path.of("").toAbsolutePath().normalize();
     }
