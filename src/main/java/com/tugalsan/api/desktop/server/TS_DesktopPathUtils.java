@@ -68,8 +68,7 @@ public class TS_DesktopPathUtils {
                     var filenameLowerCase = TGS_CharSetCast.current().toLowerCase(f.getName());
                     return Arrays.stream(acceptedFileTypes)
                             .map(ft -> TGS_CharSetCast.current().toLowerCase(ft))
-                            .filter(ft -> filenameLowerCase.endsWith("." + ft))
-                            .findAny().isPresent();
+                            .anyMatch(ft -> filenameLowerCase.endsWith("." + ft));
                 }
             });
         }
