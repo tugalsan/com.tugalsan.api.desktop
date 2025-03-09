@@ -4,6 +4,7 @@ import com.tugalsan.api.console.jdk.server.TS_ConsoleUtils;
 import com.tugalsan.api.loremipsum.client.TGS_LoremIpsum;
 import com.tugalsan.api.thread.server.sync.TS_ThreadSyncWait;
 import com.tugalsan.api.thread.server.async.run.TS_ThreadAsyncRun;
+import com.tugalsan.api.thread.server.sync.TS_ThreadSyncTrigger;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.OutputStream;
@@ -26,6 +27,7 @@ import javax.swing.JTextArea;
 public class JComponentOutputStream extends OutputStream {
 
     public static void main() throws InterruptedException {
+        var kt = TS_ThreadSyncTrigger.of("main");
         var frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -36,11 +38,11 @@ public class JComponentOutputStream extends OutputStream {
         frame.setVisible(true);
         frame.setSize(800, 600);
 
-        TS_ThreadAsyncRun.now(null, kt -> a());
-        TS_ThreadAsyncRun.now(null, kt -> a());
-        TS_ThreadAsyncRun.now(null, kt -> a());
-        TS_ThreadAsyncRun.now(null, kt -> a());
-        TS_ThreadAsyncRun.now(null, kt -> a());
+        TS_ThreadAsyncRun.now(kt, _kt -> a());
+        TS_ThreadAsyncRun.now(kt, _kt -> a());
+        TS_ThreadAsyncRun.now(kt, _kt -> a());
+        TS_ThreadAsyncRun.now(kt, _kt -> a());
+        TS_ThreadAsyncRun.now(kt, _kt -> a());
     }
 
     static void a() {
