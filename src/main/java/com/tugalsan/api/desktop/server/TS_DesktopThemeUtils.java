@@ -1,6 +1,6 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.function.client.maythrow.checkedexceptions.TGS_FuncMTCEUtils;
+import com.tugalsan.api.function.client.maythrowexceptions.checked.TGS_FuncMTCUtils;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.*;
@@ -13,7 +13,7 @@ public class TS_DesktopThemeUtils {
     }
 
     public static void setThemeDefault() {
-        TGS_FuncMTCEUtils.run(() -> UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()));
+        TGS_FuncMTCUtils.run(() -> UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()));
     }
 
     public static void setThemeDarkLAF(Component comp) {
