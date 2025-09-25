@@ -1,9 +1,7 @@
 package com.tugalsan.api.desktop.server;
 
-import java.awt.Component;
-import javax.swing.SwingUtilities;
-import com.tugalsan.api.function.client.maythrowexceptions.unchecked.TGS_FuncMTU;
-import com.tugalsan.api.function.client.maythrowexceptions.unchecked.TGS_FuncMTU_OutTyped;
+import module com.tugalsan.api.function;
+import module java.desktop;
 
 public class TS_DesktopMainUtils {
 

@@ -1,10 +1,7 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.function.client.maythrowexceptions.checked.TGS_FuncMTCUtils;
-import java.awt.Color;
-import java.awt.Component;
-import javax.swing.*;
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+import module com.tugalsan.api.function;
+import module java.desktop;
 
 public class TS_DesktopThemeUtils {
 

@@ -1,11 +1,7 @@
 package com.tugalsan.api.desktop.server.todo;
 
-import java.awt.BorderLayout;
-import java.util.ArrayList;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.SwingUtilities;
+import module java.desktop;
+import java.util.*;
 
 public class ExJTable {
 

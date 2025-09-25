@@ -1,6 +1,6 @@
 package com.tugalsan.api.desktop.server;
 
-import javax.swing.*;
+import module java.desktop;
 
 public class TS_DesktopDialogMessageUtils {
 

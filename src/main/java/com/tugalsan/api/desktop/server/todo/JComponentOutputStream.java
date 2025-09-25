@@ -1,26 +1,15 @@
 package com.tugalsan.api.desktop.server.todo;
 
-import com.tugalsan.api.console.jdk.server.TS_ConsoleUtils;
-import com.tugalsan.api.loremipsum.client.TGS_LoremIpsum;
-import com.tugalsan.api.thread.server.sync.TS_ThreadSyncWait;
-import com.tugalsan.api.thread.server.async.run.TS_ThreadAsyncRun;
-import com.tugalsan.api.thread.server.sync.TS_ThreadSyncTrigger;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import module com.tugalsan.api.console.jdk;
+import module com.tugalsan.api.loremipsum;
+import module com.tugalsan.api.thread;
+import module java.desktop;
+import java.io.*;
+import java.nio.charset.*;
+import java.util.*;
 import java.util.List;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.IntStream;
-
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import java.util.concurrent.locks.*;
+import java.util.stream.*;
 
 //https://stackoverflow.com/questions/342990/create-java-console-inside-a-gui-panel#comment43886110_343007
 @Deprecated //TODO

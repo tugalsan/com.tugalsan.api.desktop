@@ -1,7 +1,6 @@
 package com.tugalsan.api.desktop.server;
 
-import java.awt.*;
-import javax.swing.*;
+import module java.desktop;
 
 public class TS_DesktopDialogPasswordGUI extends JPanel {
 

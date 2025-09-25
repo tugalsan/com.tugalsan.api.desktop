@@ -1,9 +1,7 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.union.client.TGS_UnionExcuse;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import module com.tugalsan.api.union;
+import module java.desktop;
 
 public class TS_DesktopDialogInputNumberUtils {
 

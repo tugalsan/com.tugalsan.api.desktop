@@ -1,13 +1,10 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.shape.client.*;
-
-import java.awt.*;
+import module com.tugalsan.api.shape;
+import module com.tugalsan.api.function;
+import module java.desktop;
 import java.util.*;
 import java.util.stream.*;
-import javax.swing.*;
-import com.tugalsan.api.function.client.maythrowexceptions.unchecked.TGS_FuncMTU;
-import com.tugalsan.api.function.client.maythrowexceptions.checked.TGS_FuncMTCUtils;
 
 public class TS_DesktopDesktopPaneUtils {
 

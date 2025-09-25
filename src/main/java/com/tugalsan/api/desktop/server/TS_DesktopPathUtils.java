@@ -1,15 +1,12 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.charset.client.TGS_CharSetCast;
-import com.tugalsan.api.union.client.TGS_UnionExcuse;
-import com.tugalsan.api.union.client.TGS_UnionExcuseVoid;
-import com.tugalsan.api.function.client.maythrowexceptions.checked.TGS_FuncMTCUtils;
-import java.awt.Desktop;
-import java.io.File;
+import module com.tugalsan.api.charset;
+import module com.tugalsan.api.union;
+import module com.tugalsan.api.function;
+import module java.desktop;
+import java.io.*;
 import java.nio.file.*;
-import java.util.Arrays;
-import java.util.Optional;
-import javax.swing.*;
+import java.util.*;
 import javax.swing.filechooser.FileFilter;
 
 public class TS_DesktopPathUtils {

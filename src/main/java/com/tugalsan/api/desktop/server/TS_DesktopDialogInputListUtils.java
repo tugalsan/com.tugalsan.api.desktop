@@ -1,11 +1,10 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.union.client.TGS_UnionExcuse;
-import java.awt.Component;
+import module com.tugalsan.api.union;
+import module java.desktop;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.IntStream;
-import javax.swing.JOptionPane;
+import java.util.*;
+import java.util.stream.*;
 
 public class TS_DesktopDialogInputListUtils {
 

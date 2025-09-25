@@ -1,9 +1,8 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.cast.client.TGS_CastUtils;
-import com.tugalsan.api.union.client.TGS_UnionExcuse;
-import java.awt.*;
-import javax.swing.*;
+import module com.tugalsan.api.cast;
+import module com.tugalsan.api.union;
+import module java.desktop;
 
 public class TS_DesktopDialogInputNumberGUI extends JPanel {
 

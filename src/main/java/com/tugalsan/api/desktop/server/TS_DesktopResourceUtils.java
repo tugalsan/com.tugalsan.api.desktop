@@ -1,7 +1,7 @@
 package com.tugalsan.api.desktop.server;
 
+import module java.desktop;
 import java.net.*;
-import javax.swing.*;
 
 public class TS_DesktopResourceUtils {
 

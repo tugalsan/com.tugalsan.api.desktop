@@ -1,8 +1,7 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.shape.client.TGS_ShapeRectangle;
-import java.awt.*;
-import javax.swing.*;
+import module com.tugalsan.api.shape;
+import module java.desktop;
 
 public class TS_DesktopWindowAndFrameUtils {
 

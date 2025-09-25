@@ -1,8 +1,6 @@
 package com.tugalsan.api.desktop.server;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import module java.desktop;
 
 public class TS_DesktopDialogPasswordUtils {
 

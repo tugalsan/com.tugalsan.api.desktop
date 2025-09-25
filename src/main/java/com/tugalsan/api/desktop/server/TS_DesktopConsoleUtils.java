@@ -1,9 +1,8 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.union.client.TGS_UnionExcuse;
-import com.tugalsan.api.function.client.maythrowexceptions.checked.TGS_FuncMTCUtils;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import module com.tugalsan.api.union;
+import module com.tugalsan.api.function;
+import java.io.*;
 
 public class TS_DesktopConsoleUtils {
 

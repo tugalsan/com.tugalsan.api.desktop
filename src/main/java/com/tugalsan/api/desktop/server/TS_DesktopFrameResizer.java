@@ -1,13 +1,7 @@
 package com.tugalsan.api.desktop.server;
 
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
+import module java.desktop;
 import java.awt.event.MouseEvent;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.event.MouseInputListener;
 
 public class TS_DesktopFrameResizer implements MouseInputListener {
 

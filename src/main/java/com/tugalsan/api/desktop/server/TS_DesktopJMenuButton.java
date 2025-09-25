@@ -1,9 +1,7 @@
 package com.tugalsan.api.desktop.server;
 
-import com.tugalsan.api.function.client.maythrowexceptions.unchecked.TGS_FuncMTU_In1;
-import javax.swing.JMenu;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
+import module com.tugalsan.api.function;
+import module java.desktop;
 
 public class TS_DesktopJMenuButton extends JMenu {
 

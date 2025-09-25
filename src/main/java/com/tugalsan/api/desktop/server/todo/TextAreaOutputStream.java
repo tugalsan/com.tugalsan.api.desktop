@@ -1,13 +1,12 @@
 package com.tugalsan.api.desktop.server.todo;
 
-import com.tugalsan.api.console.jdk.server.TS_ConsoleUtils;
-import java.awt.*;
+import module com.tugalsan.api.console.jdk;
+import module java.desktop;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.*;
 import java.util.*;
 import java.util.regex.*;
 import java.util.List;
-import javax.swing.*;
 
 //https://stackoverflow.com/questions/342990/create-java-console-inside-a-gui-panel#comment43886110_343007
 @Deprecated //TODO
